@@ -4,10 +4,7 @@ from usuarios import usuario
 import getpass
 
 notas=[
-##EN insert se usa tupla
-##En select se usan listas
-##los diccionarios estan en la parte de crear []
-]
+
 def main():
     opcion=True
     while opcion:
@@ -20,9 +17,9 @@ def main():
             nombre=input("\t ¿Cual es tu nombre?: ").upper().strip()
             apellidos=input("\t ¿Cuales son tus apellidos?: ").upper().strip()
             email=input("\t Ingresa tu email: ").lower().strip()
-            # password=input("\t Ingresa tu contraseña: ").strip()
+            
             password=getpass.getpass("\t Ingresa tu contraseña: ").strip()
-            #Agregar codigo
+           
             resultado=usuario.registrar(nombre,apellidos,email,password)
             if resultado:
                 print(f"\n\tSe registro el usuario {nombre} {apellidos} correctamente")
@@ -60,8 +57,7 @@ def menu_notas(usuario_id,nombre,apellidos):
             funciones.borrarPantalla()
             print(f"\n \t .:: Crear Nota ::. ")
             notas["titulo"]=input("\tTitulo: ")
-            notas["descripcion"]=input("\tDescripción: ") ##PARA USAR UN DICCIONARIO 
-            #Agregar codigo  -> ES EL DE ABAJO
+            notas["descripcion"]=input("\tDescripción: ") 
             respuesta=nota.crear(usuario_id, titulo, descripcion)
             if respuesta:
                 print(f"\n\t .::Se creó la nota con exito::. ")
@@ -70,8 +66,8 @@ def menu_notas(usuario_id,nombre,apellidos):
             funciones.esperarTecla()    
         elif opcion == '2' or opcion=="MOSTRAR":
             funciones.borrarPantalla()
-            #Agregar codigo  -> ES EL DE ABAJO 
-            lista_nota=nota.mostrar(usuario_id)##AQUI SE USA UNA LISTA
+            #Agregar codigo  
+            lista_nota=nota.mostrar(usuario_id)
             if len (lista_nota)>0:
                 print(f"\n\tMostrar las notas")
                 print(f"{'ID':<10}{'Titulo':<30}{'descripçion':<30}{'Fecha':<20}")
